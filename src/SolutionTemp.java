@@ -1,5 +1,8 @@
+import algorithm.LRUCache;
+
 public class SolutionTemp {
     public static void main(String args[]) throws Exception {
+
     }
 }
 

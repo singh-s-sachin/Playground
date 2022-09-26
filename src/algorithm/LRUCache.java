@@ -1,74 +1,94 @@
 package algorithm;
 
+import java.util.Map;
+
 public class LRUCache {
+
+    /**
+     * Map.Entry<></>
+     * <p>
+     * Search O(n)
+     * <p>
+     * Queue<Map.Entry>
+     */
 
     class CacheNode {
         String key;
-        Object value;
-        CacheNode next;
+        String value;
 
-        CacheNode(String key, Object value) {
+        public CacheNode(String key, String value) {
             this.key = key;
             this.value = value;
+        }
+    }
+
+    class Node {
+        CacheNode dataNode;
+        Node next;
+
+        public Node(CacheNode dataNode) {
+            this.dataNode = dataNode;
             this.next = null;
         }
     }
 
-    CacheNode head;
-    int size;
 
-    public LRUCache(int size) throws Exception {
-        if (size < 2) {
-            throw new Exception("Minimum of 2 nodes expected in cache");
-        }
+    private int size;
+    private int top;
+
+    private Node head;
+
+    public LRUCache(int size) {
         this.head = null;
         this.size = size;
+        this.top = 0;
     }
 
-    public void insert(String key, Object value) {
-        CacheNode headk = insertRec(head, key, value, 1, size);
-        if (head == null) {
-            head = headk;
+    public void insert(String key, String value) { //O(n)
+        CacheNode dataNode = new CacheNode(key, value);
+        while (this.top >= size) {
+            deleteTop();
         }
+        this.head = insertRec(this.head, dataNode);
+        this.top++;
+
     }
 
-    private CacheNode insertRec(CacheNode head, String key, Object value, int pointer, int size) {
-        pointer++;
+    private Node insertRec(Node head, CacheNode dataNode) {
         if (head == null) {
-            return new CacheNode(key, value);
+            return new Node(dataNode);
         }
-        if (pointer > size) {
-            CacheNode newNode = new CacheNode(key, value);
-            newNode.next = this.head;
-            this.head = newNode;
-            return null;
-        }
-        head.next = insertRec(head.next, key, value, pointer, size);
+        head.next = insertRec(head.next, dataNode);
         return head;
     }
 
-    public Object get(String key) {
-        return getRec(head, key);
+    private void deleteTop() {//O(1)
+        this.head = this.head.next;
+        this.top--;
     }
 
-    private Object getRec(CacheNode head, String key) {
-        while (head != null) {
-            if (key.equals(head.key)) {
-                return head.value;
-            }
-            head = head.next;
+    public String get(String key) {//O(n)
+        if (head.dataNode.key.equals(key)) {
+            CacheNode dataNode = head.dataNode;
+            deleteTop();
+            insert(dataNode.key, dataNode.value);
+            return dataNode.value;
         }
-        return -1;
+        return getRec(this.head, key);
     }
 
-    public void display() {
-        displayRec(head);
-    }
-
-    private void displayRec(CacheNode head) {
-        if (head != null) {
-            System.out.println("Key : " + head.key + "\t\tValue : " + head.value);
-            displayRec(head.next);
+    private String getRec(Node head, String key) {
+        if (head.next == null) {
+            return String.valueOf(-1);
+        }
+        if (head.next.dataNode.key.equals(key)) {
+            String value = head.next.dataNode.value;
+            head.next = head.next.next;
+            return value;
+        } else {
+            return getRec(head.next, key);
         }
     }
+
+
 }
