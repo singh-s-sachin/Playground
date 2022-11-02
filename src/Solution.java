@@ -76,7 +76,7 @@ public class Solution {
          * BST CRUD operations
          */
         BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(Arrays.asList(15, 10, 20, 8, 12, 16, 25, 4, 11, 26, 27));
+        bst.insert(Arrays.asList(15, 10, 20, 8, 12, 16, 25, 4, 11, 26, 27, 3, 2, 1, 0));
         System.out.println(bst.nearestVal(14));
         bst.inorder();
         bst.postorder();
@@ -95,8 +95,10 @@ public class Solution {
          *           10        20
          *         8    12  16     25
          *      4     11                26
-         *                                  27
-         */
+         *    3                             27
+         *  2
+         *1
+         * */
 
 
         //Kth biggest element
@@ -159,6 +161,67 @@ public class Solution {
         //Singleton
         XSingleton xSingleton = XSingleton.getInstance();
 
+        //PossibleJumps
+        System.out.println(PossibleJumps.getPossibleJumps(3, 13));
+
+
+        System.out.println("Longest Substring : " +
+                LongestUniformString.getLongestUniformSubString("aabbbbbCdAA"));
+
+        System.out.println("Smallest : " + SmallestNumber.getSmallestNumber(Arrays.asList(3, 4, 5, 6, 1, 2)));
+
+        System.out.println("Kth Smallest : " + KthSmallest.getKthSmallest(Arrays.asList(3, 4, 5, 6, 1, 2), 2));
+
+        System.out.println("Prime factors : " + PrimeFactor.getPrimeFactors(6));
+
+        System.out.println(AnagramAnalytic.getComputedAnagram("cat dog tac sat tas god dog"));
+
+        int[] sumVal = SumOfFractions.compute(new int[]{1, 2}, new int[]{2, 3});
+        System.out.println("Sum of fraction : " + sumVal[0] + "/" + sumVal[1]);
+
+        System.out.println("Length Encoded String : " + StringManipulation.encodeLength("aabbbc"));
+
+        System.out.println("Non repeating first char : " + StringManipulation.getFirstNonRepeatingChar("apple"));
+
+        PascalTriangle.print(9);
+
+        System.out.println("Reversed string : " + StringManipulation.reverse("apple"));
+
+        System.out.println("Is power of ten : " + MathUtil.isPowerOfTen(100000));
+
+        System.out.println("Power value : " + MathUtil.power(10, 3));
+
+        System.out.println("Missing values from panagram : " + StringManipulation.getMissingCharFromPanagram("sachin kumar singh"));
+
+        System.out.println("Loop Length : " + CycleLength.compute(new int[]{2, 0, 4, 1, 3}, 1));
+
+        System.out.println("[Logs] Maximum consumers : " + LogUtil.getMaximumConsumer(Arrays.asList("10.0.0.1 - GET 2020-08-24", "10.0.0.2 - GET 2020-08-24", "10.0.0.2 - GET 2020-08-20")));
+
+        System.out.println("Unique Tuples : " + UniqueTuples.getUniqueTuples("aaab", 3));
+
+        System.out.println("Median : " + MedianOfTwoArray.compute(new int[]{-5, 3, 6, 12, 15}, new int[]{-12, -10, -6, -3, 4, 10}));
+
+        System.out.println("Smallest sub-array exceeding target : " + SmallestSubArrayExceedingTarget.compute(new int[]{1, 4, 45, 6, 0, 19}, 51));
+
+        System.out.println("Who is elected : " + WhoIsElected.compute(100, 21));
+
+        int[] position = RobotUtil.move("rluldldddURLDDDudllURlllddddrrrrrrrrr");
+        System.out.println("Move robot \nx : " + position[0] + "\ny : " + position[1]);
+
+        System.out.println("Min diff between two word : " + StringManipulation.distanceBetweenTwoWord("geeks for geeks contribute practice", "geeks", "practice"));
+
+        System.out.println("Optimal collection path : " + MaxCollectOptimalPath.compute(new int[][]{{0, 0, 0, 0, 5}, {0, 1, 1, 1, 0}, {2, 0, 0, 0, 0}}));
+
+        System.out.println("Maximum snow collected : " + MaxSnowCollection.compute(new int[]{0, 1, 3, 0, 1, 2, 0, 4, 2, 0, 3, 0}));
+        //[0,1,3,3,3,3,3,4,4,4,4,4]
+        //[4,4,4,4,4,4,4,3,3,3,3,0]
+        // 0,0,0,3,2,1,3,0,1,3,0,0
+
+        System.out.println("Longest palindrome : " + LongestPalindrome.compute("forgeeksskeegfor"));
+
+        System.out.println("Is open closed bracket : " + OpenClosedBracket.validate("{{{[(({{}}))]}}}"));
+
+        System.out.println("Fraction to decimal : " + RepeatingDecimalBracket.fractionToDecimal(23, 22));
 
         System.out.println("Time elapsed : " + (Timestamp.from(Instant.now()).getTime() - timestamp.getTime()) + "ms");
 

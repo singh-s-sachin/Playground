@@ -2,46 +2,44 @@ package algorithm;
 
 public class LinuxBinaryTree {
 
-    public int data;
-    public LinuxBinaryTree left, right;
-
-    public LinuxBinaryTree(int data) {
-        this.data = data;
-        this.left = this.right = null;
-    }
-
-    class NodeVal
-    {
+    class Node {
         int data;
-        int max=0;
+        Node left, right;
 
-        public NodeVal(int i) {
-            data=i;
-
+        Node(int data) {
+            this.data = data;
+            this.left = this.right = null;
         }
     }
-    public Object getMaxWeightDuplicateDirectory() {
-        NodeVal nodeVal = new NodeVal(-1);
-        getMaxWeightDuplicateDirectoryRec(this, 0, 0,nodeVal);
-        return nodeVal.data;
+
+    class NodeMeta {
+        int sumLeft;
+        int sumRight;
+
+        NodeMeta(int sumLeft, int sumRight) {
+            this.sumLeft = sumLeft;
+            this.sumRight = sumRight;
+        }
     }
 
-    //Incorrect
-    private void getMaxWeightDuplicateDirectoryRec(LinuxBinaryTree linuxBinaryTree, int totalLeft, int totalRight, NodeVal nodeVal) {
-        int root = linuxBinaryTree.data;
-        if (linuxBinaryTree.left != null) {
-            int left = linuxBinaryTree.left.data;
-            getMaxWeightDuplicateDirectoryRec(linuxBinaryTree.left, totalLeft + left, totalRight, nodeVal);
+    public int getMaximumDuplicateFolder(Node root) {
+        getMaximumDuplicateFolderRec(root, 0);
+
+        //TODO : Yet to be implemented
+        return 0;
+    }
+
+    private void getMaximumDuplicateFolderRec(Node root, int maxDuplicateFolder) {
+        if (root.left != null) {
+            getMaximumDuplicateFolderRec(root.left, maxDuplicateFolder);
         }
-        if (linuxBinaryTree.right != null) {
-            int right = linuxBinaryTree.right.data;
-            getMaxWeightDuplicateDirectoryRec(linuxBinaryTree.right, totalLeft, totalRight + right, nodeVal);
+        int left, right;
+        if (root.right == null) {
+            right = 0;
+        } else {
+            right = root.data;
         }
-        if(right==left && (totalLeft+totalRight)>nodeVal.max)
-        {
-            nodeVal.max=totalLeft+totalRight;
-            nodeVal.data=root;
-        }
+
     }
 
 

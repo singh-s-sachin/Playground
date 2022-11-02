@@ -1,7 +1,7 @@
 package algorithm;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.LinkedList;
 
 public class BinarySearchTree {
     class Node {
@@ -35,6 +35,22 @@ public class BinarySearchTree {
             }
         }
         return root;
+    }
+
+    public void bfsTraversal() {
+        System.out.println("::::: Traversing Breadth First :::::");
+        Queue<Node> nodeQueue = new LinkedList<>();
+        nodeQueue.add(root);
+        while (!nodeQueue.isEmpty()) {
+            Node topNode = nodeQueue.poll();
+            System.out.println(topNode.data);
+            if (topNode.left != null) {
+                nodeQueue.add(topNode.left);
+            }
+            if (topNode.right != null) {
+                nodeQueue.add(topNode.right);
+            }
+        }
     }
 
     public List<Integer> inorder() {
@@ -143,17 +159,22 @@ public class BinarySearchTree {
 
     public void rightView() {
         System.out.println("::::: Right view :::::");
-        rightViewRec(root, 0, new Max(0));
+        Map.Entry<String, Integer> levelMap = new AbstractMap.SimpleEntry<>("Top", 0);
+        if (root == null) {
+            System.out.println("-1");
+            return;
+        }
+        rightViewRec(root, 0, levelMap);
     }
 
-    private void rightViewRec(Node root, int counter, Max max) {
+    private void rightViewRec(Node root, int counter, Map.Entry<String, Integer> maxMap) {
         if (root != null) {
-            if (counter > max.maxTop || counter == 0) {
+            if (counter >= maxMap.getValue()) {
                 System.out.println(root.data);
-                max.maxTop = counter;
+                maxMap.setValue(counter + 1);
             }
-            rightViewRec(root.right, counter + 1, max);
-            rightViewRec(root.left, counter + 1, max);
+            rightViewRec(root.right, counter + 1, maxMap);
+            rightViewRec(root.left, counter + 1, maxMap);
         }
     }
 
@@ -173,20 +194,45 @@ public class BinarySearchTree {
         }
     }
 
-    public int nearestVal(int k)
-    {
-        Max min=new Max(Integer.MAX_VALUE);
-        nearestValRec(k,root,min);
+    public int nearestVal(int k) {
+        Max min = new Max(Integer.MAX_VALUE);
+        nearestValRec(k, root, min);
         return min.maxTop;
 
     }
 
     private void nearestValRec(int k, Node root, Max min) {
-        if(root!=null) {
-            int currDiff=k - root.data;
-            min.maxTop=currDiff>=0?currDiff< min.maxTop?currDiff:min.maxTop:min.maxTop;
-            nearestValRec(k, root.left, min );
+        if (root != null) {
+            int currDiff = Math.abs(k - root.data);
+            int minDiff = Math.abs(k - min.maxTop);
+            min.maxTop = currDiff < minDiff ? root.data : min.maxTop;
+            nearestValRec(k, root.left, min);
             nearestValRec(k, root.right, min);
+        }
+    }
+
+    public int kthNearest(int value, int k) {
+        Stack<Integer> minStack = new Stack<>();
+        Map.Entry<String, Integer> minMap = new AbstractMap.SimpleEntry<>("min", Integer.MAX_VALUE);
+        kthNearestRec(root, value, minStack, minMap);
+        int kthNearest = -1;
+        while (k > 0) {
+            kthNearest = minStack.pop();
+            k--;
+        }
+        return kthNearest;
+    }
+
+    private void kthNearestRec(Node root, int value, Stack<Integer> minStack, Map.Entry<String, Integer> minMap) {
+        if (root != null) {
+            kthNearestRec(root.left, value, minStack, minMap);
+            int currDiff = Math.abs(root.data - value);
+            int minDiff = Math.abs(minMap.getValue() - value);
+            if (minDiff > currDiff) {
+                minStack.add(minMap.getValue());
+                minMap.setValue(root.data);
+            }
+            kthNearestRec(root.right, value, minStack, minMap);
         }
     }
 
