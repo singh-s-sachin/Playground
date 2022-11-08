@@ -284,4 +284,41 @@ public class BinarySearchTree {
             }
         }
     }
+
+    public void averageOfEachLevel() {
+        Map<Integer, List<Integer>> levelValuesMap = getValuesForLevel(root);
+
+        System.out.println("Average of each levels : ");
+        for (Map.Entry<Integer, List<Integer>> entry : levelValuesMap.entrySet()) {
+            int s = 0, count = 0;
+            for (int values : entry.getValue()) {
+                s += values;
+                count += 1;
+            }
+            System.out.println("Level " + (entry.getKey()+1) + ":" + (double) s / count);
+        }
+    }
+
+    private Map<Integer, List<Integer>> getValuesForLevel(Node root) {
+        Queue<Map.Entry<Node, Integer>> nodeStack = new LinkedList<>();
+        Map<Integer, List<Integer>> levelValuesMap = new HashMap<>();
+        nodeStack.add(new AbstractMap.SimpleEntry<>(root, 0));
+        while (nodeStack.size() > 0) {
+            Map.Entry<Node, Integer> currEntry = nodeStack.poll();
+            Node currNode = currEntry.getKey();
+            int currLevel = currEntry.getValue();
+
+            List<Integer> levelValues = levelValuesMap.getOrDefault(currLevel, new ArrayList<>());
+            levelValues.add(currNode.data);
+            levelValuesMap.put(currLevel, levelValues);
+
+            if (currNode.right != null) {
+                nodeStack.add(new AbstractMap.SimpleEntry<>(currNode.right, currLevel + 1));
+            }
+            if (currNode.left != null) {
+                nodeStack.add(new AbstractMap.SimpleEntry<>(currNode.left, currLevel + 1));
+            }
+        }
+        return levelValuesMap;
+    }
 }

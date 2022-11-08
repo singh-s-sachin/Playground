@@ -89,6 +89,7 @@ public class Solution {
         DoublyLinkedList dll = DoublyLinkedList.valueOf(bst);
         dll.display();
         dll.displayRev();
+        bst.averageOfEachLevel();
         System.out.println("Common Ancestor : " + bst.getCommonAncestor(16, 25));
         /**
          *                15
