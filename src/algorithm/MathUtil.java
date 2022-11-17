@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.ArrayList;
+
 public class MathUtil {
     public static boolean isPowerOfTen(int input) {
         int value = 10;
@@ -11,13 +13,21 @@ public class MathUtil {
         return value == input;
     }
 
-    public static int power(int base, int power) {
-        int value = 1;
-        while (power > 0) {
-            value *= base;
-            power--;
+    public static double power(int base, int power) {
+        ArrayList<Integer> bitExp = new ArrayList<>();
+        while(power > 0) {
+            bitExp.add(power%2);
+            power = power/2;
         }
-        return value;
+        double ans = 1;
+        double basePower = base;
+        for(int x : bitExp) {
+            if(x == 1) {
+                ans = ans * basePower;
+            }
+            basePower = basePower*basePower;
+        }
+        return ans;
     }
 
     public static int atoi(String input)

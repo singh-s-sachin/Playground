@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.Map;
-
 public class LRUCache {
 
     /**
@@ -33,7 +31,7 @@ public class LRUCache {
     }
 
 
-    private int size;
+    private final int size;
     private int top;
 
     private Node head;

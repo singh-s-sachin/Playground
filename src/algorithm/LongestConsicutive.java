@@ -1,6 +1,8 @@
 package algorithm;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class BST {
     public int maxConsicutive() {
@@ -81,7 +83,7 @@ class BST {
 }
 
 public class LongestConsicutive {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         BST bst = new BST();
         bst.insert(Arrays.asList(100,4,4,200,1,3,2));
         System.out.println(bst.maxConsicutive());

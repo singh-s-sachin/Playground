@@ -1,9 +1,7 @@
 package algorithm;
 
-import java.security.PublicKey;
-
 public class StackPen implements Cloneable {
-    private int size;
+    private final int size;
     private int[] stack;
     private int top;
 

@@ -1,7 +1,7 @@
 package algorithm;
 
-import java.util.*;
 import java.util.LinkedList;
+import java.util.*;
 
 public class BinarySearchTree {
     class Node {
@@ -321,4 +321,26 @@ public class BinarySearchTree {
         }
         return levelValuesMap;
     }
+
+    /**
+    public int getKSumPathCount(int k)
+    {
+        Map.Entry<String,Integer> countEntry = new AbstractMap.SimpleEntry<>("count",0);
+        getKSumPathCount(root,k, root.data, countEntry);
+        return countEntry.getValue();
+    }
+
+    private void getKSumPathCount(Node root, int k,int sum, Map.Entry<String, Integer> countEntry) {
+        if(root!=null)
+        {
+            if(sum+ root.data>k)
+            {
+                countEntry.setValue(countEntry.getValue()+1);
+                sum-=
+            }
+            getKSumPathCount(root.left,sum+ root.data,k,countEntry);
+
+        }
+    }
+     **/
 }

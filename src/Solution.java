@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         Timestamp timestamp = Timestamp.from(Instant.now());
 
@@ -200,7 +200,18 @@ public class Solution {
 
         System.out.println("Unique Tuples : " + UniqueTuples.getUniqueTuples("aaab", 3));
 
+        System.out.println("ATOI : " + MathUtil.atoi("345"));
+
         System.out.println("Median : " + MedianOfTwoArray.compute(new int[]{-5, 3, 6, 12, 15}, new int[]{-12, -10, -6, -3, 4, 10}));
+
+        System.out.println("Distinct character String : "+StringManipulation.removeDuplicateCharacters("qegdogoqwgdouasaaaswsssss"));
+
+        int[] nearestElements = NeartestGreater.compute(new int[]{1,2,3,4,3});
+        System.out.println("Nearest greatest");
+        for(int element :nearestElements)
+        {
+            System.out.println(element);
+        }
 
         System.out.println("Smallest sub-array exceeding target : " + SmallestSubArrayExceedingTarget.compute(new int[]{1, 4, 45, 6, 0, 19}, 51));
 

@@ -1,7 +1,7 @@
 package lld.snakeladder;
 
 public class Cell {
-    private int position;
+    private final int position;
     private Jump jump;
 
     public Cell(int position) {

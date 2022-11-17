@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Traversal {
     class Index {
-        private int x;
-        private int y;
+        private final int x;
+        private final int y;
 
         public int getX() {
             return x;
@@ -22,8 +22,7 @@ public class Traversal {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof Index) {
-                Index index = (Index) obj;
+            if (obj instanceof Index index) {
                 return this.x == index.getX() && this.y == index.getY();
             } else {
                 return false;

@@ -1,6 +1,9 @@
 package algorithm;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class PasswordSuggester {
     private static final Map<Character, Character> REPLACEABLE = new HashMap<>() {{

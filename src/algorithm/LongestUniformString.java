@@ -3,7 +3,7 @@ package algorithm;
 public class LongestUniformString {
     public static String getLongestUniformSubString(String input) {
         int longestStart = 0;
-        int longestString = 0;
+        int longestString = Integer.MIN_VALUE;
         int length = input.length();
         int count = 0;
         int start = 0;
@@ -19,11 +19,7 @@ public class LongestUniformString {
                 start = i;
             }
         }
-        String response = "";
-        while (longestString != -1) { //O(n)
-            response += input.charAt(longestStart++);
-            longestString--;
-        }
-        return response;
+
+        return input.substring(longestStart,longestStart+longestString+1);
     }
 }

@@ -7,7 +7,7 @@ import static lld.messagingqueue.Consumer.PEEK_TIME;
 
 public class Consumer {
     static final long PEEK_TIME = 1000;
-    private static Consumer consumer = new Consumer();
+    private static final Consumer consumer = new Consumer();
 
 
     private boolean isActive = false;

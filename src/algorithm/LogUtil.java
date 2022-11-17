@@ -1,6 +1,9 @@
 package algorithm;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LogUtil {
     public static List<String> getMaximumConsumer(List<String> logs) {

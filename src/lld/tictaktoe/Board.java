@@ -22,7 +22,7 @@ public class Board {
             for (int j = 0; j < 3; j++) {
                 System.out.print((cells[i][j].hasBall() ? cells[i][j].getBallType() : "-") + "\t");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }

@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.*;
-
 public class KthBiggest {
     public static int getBiggest(int[] values, int k) throws Exception {
         int len = values.length;

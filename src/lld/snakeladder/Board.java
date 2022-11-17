@@ -1,8 +1,8 @@
 package lld.snakeladder;
 
 public class Board {
-    private int boardSize;
-    private Cell[][] cells;
+    private final int boardSize;
+    private final Cell[][] cells;
 
     public Board(int boardSize, int[] snakePos, int[] ladderPos) throws Exception {
         this.boardSize = (int) Math.sqrt(boardSize);

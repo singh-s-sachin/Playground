@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.List;
-
 public class MaxSnowCollection {
     //https://www.csestack.org/snow-between-hills-coding-challenge/
 

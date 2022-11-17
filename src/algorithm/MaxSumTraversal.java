@@ -5,8 +5,8 @@ import java.util.List;
 
 public class MaxSumTraversal {
     class Index {
-        private int x;
-        private int y;
+        private final int x;
+        private final int y;
 
         public int getX() {
             return x;
@@ -23,8 +23,7 @@ public class MaxSumTraversal {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof Traversal.Index) {
-                Traversal.Index index = (Traversal.Index) obj;
+            if (obj instanceof Traversal.Index index) {
                 return this.x == index.getX() && this.y == index.getY();
             } else {
                 return false;

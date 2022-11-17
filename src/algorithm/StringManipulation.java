@@ -88,5 +88,20 @@ public class StringManipulation {
         }
         return minDiff - 1;
     }
+
+    public static String removeDuplicateCharacters(String input)
+    {
+        Set<Character> charSet = new HashSet<>();
+        for(char k : input.toCharArray())
+        {
+            charSet.add(k);
+        }
+        StringBuilder response = new StringBuilder();
+        for(char k : charSet)
+        {
+            response.append(k);
+        }
+        return response.toString();
+    }
 }
 

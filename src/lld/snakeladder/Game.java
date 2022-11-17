@@ -27,7 +27,7 @@ public class Game {
         }
     }
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         Game game = new Game(2);
 
         Player winningPlayer = null;
