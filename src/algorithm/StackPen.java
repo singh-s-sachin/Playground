@@ -10,14 +10,14 @@ public class StackPen implements Cloneable {
         init();
     }
 
-    private void init() {
-        this.stack = new int[this.size];
-        this.top = -1;
-    }
-
     public StackPen(int size) {
         this.size = size;
         init();
+    }
+
+    private void init() {
+        this.stack = new int[this.size];
+        this.top = -1;
     }
 
     public void insert(int data) throws Exception {

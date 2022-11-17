@@ -129,7 +129,7 @@ public class Solution {
         stackPen.popAll();
 
 
-        //LinkedList to imput and reverse/reverse in group
+        //LinkedList to input and reverse/reverse in group
         LinkedList ll = new LinkedList();
         values.forEach(data -> ll.insert(data));
         ll.display();
