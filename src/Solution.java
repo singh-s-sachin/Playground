@@ -6,22 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) throws Exception {
 
-        Timestamp timestamp = Timestamp.from(Instant.now());
 
         //Question 1 - Whether there is a path to destination (bottom right) from origin (top left) or not. One can step over 0 and move right or down
 
         Traversal traversal = new Traversal();
-        List<List<Integer>> matrix = Arrays.asList(
-                Arrays.asList(0, 1, 0, 0, 0, 0, 0),
-                Arrays.asList(0, 1, 0, 1, 0, 0, 0),
-                Arrays.asList(0, 0, 0, 1, 0, 0, 0),
-                Arrays.asList(1, 1, 0, 0, 1, 0, 0),
-                Arrays.asList(0, 0, 1, 0, 1, 1, 1),
-                Arrays.asList(1, 1, 0, 0, 0, 1, 0),
-                Arrays.asList(1, 0, 1, 1, 0, 0, 0)
-        );
+        List<List<Integer>> matrix = Arrays.asList(Arrays.asList(0, 1, 0, 0, 0, 0, 0), Arrays.asList(0, 1, 0, 1, 0, 0, 0), Arrays.asList(0, 0, 0, 1, 0, 0, 0), Arrays.asList(1, 1, 0, 0, 1, 0, 0), Arrays.asList(0, 0, 1, 0, 1, 1, 1), Arrays.asList(1, 1, 0, 0, 0, 1, 0), Arrays.asList(1, 0, 1, 1, 0, 0, 0));
         System.out.println(traversal.hasPathToDestination(matrix));
 
 
@@ -63,12 +54,7 @@ public class Solution {
          3. Matrix [r+1] [c+1]
          Starting from any column in row 0 return the largest sum of any of the paths up to row N-1.
          */
-        List<List<Integer>> sumMatrix = Arrays.asList(
-                Arrays.asList(16, 92, 41, 44),
-                Arrays.asList(4, 2, 3, 4),
-                Arrays.asList(17, 24, 4, 13),
-                Arrays.asList(15, 1, 3, 0)
-        );
+        List<List<Integer>> sumMatrix = Arrays.asList(Arrays.asList(16, 92, 41, 44), Arrays.asList(4, 2, 3, 4), Arrays.asList(17, 24, 4, 13), Arrays.asList(15, 1, 3, 0));
         MaxSumTraversal maxSumTraversal = new MaxSumTraversal();
         System.out.println(maxSumTraversal.getMaxSumTraversal(sumMatrix));
 
@@ -103,8 +89,7 @@ public class Solution {
 
 
         //Kth biggest element
-        System.out.println(KthBiggest
-                .getBiggest(new int[]{99, 198, 10, 20, 8, 12, 16, 25, 4, 11, 26, 27}, 1));
+        System.out.println(KthBiggest.getBiggest(new int[]{99, 198, 10, 20, 8, 12, 16, 25, 4, 11, 26, 27}, 1));
 
         //Implement a stack
         List<Integer> values = Arrays.asList(11, 15, 10, 20, 8, 12, 16, 25, 4, 11, 26, 27);
@@ -166,8 +151,7 @@ public class Solution {
         System.out.println(PossibleJumps.getPossibleJumps(3, 13));
 
 
-        System.out.println("Longest Substring : " +
-                LongestUniformString.getLongestUniformSubString("aabbbbbCdAA"));
+        System.out.println("Longest Substring : " + LongestUniformString.getLongestUniformSubString("aabbbbbCdAA"));
 
         System.out.println("Smallest : " + SmallestNumber.getSmallestNumber(Arrays.asList(3, 4, 5, 6, 1, 2)));
 
@@ -204,12 +188,11 @@ public class Solution {
 
         System.out.println("Median : " + MedianOfTwoArray.compute(new int[]{-5, 3, 6, 12, 15}, new int[]{-12, -10, -6, -3, 4, 10}));
 
-        System.out.println("Distinct character String : "+StringManipulation.removeDuplicateCharacters("qegdogoqwgdouasaaaswsssss"));
+        System.out.println("Distinct character String : " + StringManipulation.removeDuplicateCharacters("qegdogoqwgdouasaaaswsssss"));
 
-        int[] nearestElements = NeartestGreater.compute(new int[]{1,2,3,4,3});
+        int[] nearestElements = NeartestGreater.compute(new int[]{1, 2, 3, 4, 3});
         System.out.println("Nearest greatest");
-        for(int element :nearestElements)
-        {
+        for (int element : nearestElements) {
             System.out.println(element);
         }
 
@@ -234,8 +217,6 @@ public class Solution {
         System.out.println("Is open closed bracket : " + OpenClosedBracket.validate("{{{[(({{}}))]}}}"));
 
         System.out.println("Fraction to decimal : " + RepeatingDecimalBracket.fractionToDecimal(23, 22));
-
-        System.out.println("Time elapsed : " + (Timestamp.from(Instant.now()).getTime() - timestamp.getTime()) + "ms");
 
     }
 }
