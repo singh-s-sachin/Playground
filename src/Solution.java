@@ -1,4 +1,5 @@
 import algorithm.*;
+import concepts.FunctionalInterface;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -218,5 +219,10 @@ public class Solution {
 
         System.out.println("Fraction to decimal : " + RepeatingDecimalBracket.fractionToDecimal(23, 22));
 
+        /********************************************CONCEPTS********************************************/
+
+        FunctionalInterface functionalInterface=n -> n%2==0;
+
+        System.out.println("Functional Interface : "+ functionalInterface.isAcceptable(2));
     }
 }
